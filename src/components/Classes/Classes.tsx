@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
       flexDirection: 'column',
       color: '#4ef3b4',
       textDecoration: 'none',
-      backgroundColor: 'white',
+      backgroundColor: 'burleywood',
       width: '60%',
       justifyContent: 'center',
       alignItems: 'center',
@@ -196,6 +196,10 @@ export const Classes = withRouter(( props:ClassesProps) => {
     {
       text: 'About',
       onClick: () => history.push('/about')
+    },
+    {
+      text: 'Thank You',
+      onClick: () => history.push('/thankyou')
     },
   ]
 

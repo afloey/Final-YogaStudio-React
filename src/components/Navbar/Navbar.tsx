@@ -91,6 +91,11 @@ export const Navbar = () => {
                                 <Link to='/about' className={`${classes.navbarItem} ${classes.psides}`}>About Us</Link>
                             </Button>
                         </li>
+                        <li>
+                            <Button>
+                                <Link to='/thankyou' className={`${classes.navbarItem} ${classes.psides}`}>Thank You</Link>
+                            </Button>
+                        </li>      
                     </AuthCheck>
                     </Suspense>
                 </ul>

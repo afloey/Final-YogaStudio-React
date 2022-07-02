@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { FirebaseAppProvider, AuthCheck } from 'reactfire';
-import { Home, About, Classes, SignIn } from './components'
+import { Home, About, Classes, SignIn, ThankYou } from './components'
 import './style.css'
 import { firebaseConfig } from './firebaseConfig'
 import 'firebase/auth'
@@ -28,6 +28,9 @@ ReactDOM.render(
           </Route>
           <Route exact path='/signin'>
             <SignIn></SignIn>
+            </Route>
+          <Route exact path='/thankyou'>
+          <ThankYou main_text={undefined} title={''}></ThankYou>
           </Route>
         </Switch>
       </Router>
