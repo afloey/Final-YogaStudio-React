@@ -24,7 +24,7 @@ ReactDOM.render(
             <Classes></Classes>
           </Route>
           <Route exact path='/about'>
-            <About></About>
+            <About title={''} main_text={undefined}></About>
           </Route>
           <Route exact path='/signin'>
             <SignIn></SignIn>

@@ -2,15 +2,16 @@ import React, { Suspense } from 'react'
 import { makeStyles } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
-import Navmenu from '../../assets/images/navmenu.jpg'
+import Lanternsofferings from '../../assets/images/lanternsofferings.jpg'
 import { AuthCheck } from 'reactfire'
 
 
 const useStyles = makeStyles({
     logo: {
-        content: `url(${Navmenu})`,
-        maxWidth: '10%',
+        content: `url(${Lanternsofferings})`,
+        maxWidth: '15%',
         height: 'auto',
+        borderRadius: '15%',
     },
     navlogo: {
         display: 'flex',
@@ -36,7 +37,7 @@ const useStyles = makeStyles({
         borderBottom: '1px solid grey',
     },
     navbarItem: {
-        color: 'white',
+        color: 'darkslategray',
         textDecoration: 'none',
     },
     p5: {

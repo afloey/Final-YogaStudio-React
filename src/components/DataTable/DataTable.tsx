@@ -8,10 +8,14 @@ import { Button, Dialog,
     DialogContentText,
     DialogTitle } from '@material-ui/core'
 import { ClassesForm } from '../ClassesForm'
+import '../../style.css'
+
 
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 90, hide: true},
+  { field: 'id', headerName: 'ID', width: 90, hide: true },
+  { field: 'name', headerName: ' Name', flex: 1},
+  { field: 'email', headerName: 'Email', flex: 1},
   { field: 'class_name', headerName: 'Class Name', flex: 1},
   { field: 'class_day', headerName: 'Class Day', flex: 1},
   { field: 'class_time', headerName: 'Class Time', flex: 1},

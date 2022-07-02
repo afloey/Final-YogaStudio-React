@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../../style.css'
 //import { useGetData } from '../../custom-hooks'
 // import { Link, Navigate } from 'react-router-dom'
 // import { Paper } from '@material-ui/core'
@@ -38,7 +39,7 @@ interface ClassesProps{
   match: RouteComponentProps['match']
 }
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   main: {
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
       justifyContent: 'center',
       alignItems: 'center',
       fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
+      backgroundColor: 'burleywood',
   },
   h3: {
       display: 'flex',
@@ -85,7 +87,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   logo_navigation: {
       listStyle: 'none',
-      textTransform: 'uppercase',
+      textTransform: 'none',
       textDecoration: 'none',
   },
   root: {
@@ -124,8 +126,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   drawerHeader: {
     display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
+    alignItems: 'left',
+    padding: theme.spacing(0, 2),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
@@ -144,24 +146,24 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0,
+    marginLeft: 3,
   },
   toolbar:{
     display: 'flex',
-    backgroundColor: '#003155',
+    backgroundColor: 'lightseagreen',
     color: 'white',
-    fontFamily: "Georgia, 'Times New Roman', Times, serif",
+    fontFamily: "Verdana, Geneva, Tahoma, sans-serif;",
   },
   toolbar_button: {
     marginLeft: 'auto',
-    color: 'white',
-    fontFamily: "Georgia, 'Times New Roman', Times, serif",
+    color: 'darkslategray',
+    fontFamily: "Verdana, Geneva, Tahoma, sans-serif;",
   },
   margin_top: {
       marginTop: '50px',
   },
   font: {
-      fontFamily: "Georgia, 'Times New Roman', Times, serif",
+      fontFamily: "Verdana, Geneva, Tahoma, sans-serif;",
   },
   leftMargin: {
       marginLeft: '240px',
@@ -198,53 +200,57 @@ export const Classes = withRouter(( props:ClassesProps) => {
   ]
 
   return (
+    <>
     <div className={`${classes.root} ${classes.column}`}>
         <CssBaseline />
-        <AppBar position='fixed' className={clsx(classes.appBar, {[classes.appBarShift]: open})}>
-          <Toolbar className={classes.toolbar}>
-            <IconButton color='inherit' aria-label='open-drawer' onClick={handleDrawerOpen} edge='start' className={clsx(classes.menuButton, open && classes.hide)}>
-              <MenuIcon/>
-            </IconButton>
-            <Typography variant='h6' className={classes.font} noWrap>
-              Yoga Studio
-            </Typography>
-            <Button className={classes.toolbar_button} onClick={handleDialogClickOpen}>Create New Class</Button>
+        <AppBar position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: open })}>
+            <Toolbar className={classes.toolbar}>
+                <IconButton color="inherit" aria-label="open-drawer" onClick={handleDrawerOpen} edge="start" className={clsx(classes.menuButton, open && classes.hide)}>
+                    <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" className={classes.font} noWrap>
+                    My Classes
+                </Typography>
+                <Button className={classes.toolbar_button} onClick={handleDialogClickOpen}>Create New Class</Button>
 
-            <Dialog open={dialogOpen} onClose={handleDialogClickClose} aria-labelledby='form-dialog-title'>
-              <DialogTitle id='form-dialog-title'>Add New Class</DialogTitle>
-              <DialogContent>
-                <DialogContentText></DialogContentText>
-                <ClassesForm />
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleDialogClickClose} color='primary'>Cancel</Button>
-                <Button onClick={handleDialogClickOpen} color='primary'>Done</Button>
-              </DialogActions>
-            </Dialog>
-          </Toolbar>
+                {/* Dialog Pop Up */}
+                <Dialog open={dialogOpen} onClose={handleDialogClickClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Add New Class</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText></DialogContentText>
+                        <ClassesForm />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleDialogClickClose} color="primary">Cancel</Button>
+                        <Button onClick={handleDialogClickOpen} color="primary">Done</Button>
+                    </DialogActions>
+                </Dialog>
+                {/* End dialog pop-up */}
+            </Toolbar>
         </AppBar>
-        <MUIDrawer className={classes.drawer} variant='persistent' anchor='left' open={open} classes={{paper: classes.drawerPaper}}>
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            {itemsList.map((item, index) => {
-              const { text, onClick } = item;
-              return (
-                <ListItem button key={text} onClick={onClick}>
-                  <ListItemText primary={text}/>
-                </ListItem>
-              )
-            })}
-          </List>
+        <MUIDrawer className={classes.drawer} variant="persistent" anchor="left" open={open} classes={{paper: classes.drawerPaper,}}>
+            <div className={classes.drawerHeader}>
+                <IconButton onClick={handleDrawerClose}>
+                    {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                </IconButton>
+            </div>
+            <Divider />
+            <List>
+                {itemsList.map((item, index) => {
+                    const { text, onClick } = item;
+                    return (
+                        <ListItem button key={text} onClick={onClick}>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    );
+                })}
+            </List>
         </MUIDrawer>
         <main className={`${clsx(classes.content, {[classes.contentShift]: open,})} ${classes.leftMargin}`}>
-          <div className={classes.drawerHeader}/>
-            <DataTable/>
+            <div className={classes.drawerHeader} />
+                <DataTable />
         </main>
-    </div>
-  )
+      </div>
+  </>
+)
 });

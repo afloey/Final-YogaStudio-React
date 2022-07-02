@@ -17,6 +17,7 @@ const useStyles = makeStyles({
         backgroundPosition: 'center',
         position: 'absolute',
         zIndex: -1,
+        borderRadius: '5%',
     },
     main_text: {
         textAlign: 'center',
